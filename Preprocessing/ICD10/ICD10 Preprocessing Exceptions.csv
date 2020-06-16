@@ -22,4 +22,4 @@ A08.31,,merge,A08 viral oth unsp,
 A08.39,,merge,A08 viral oth unsp,
 A08.4,,merge,A08 viral oth unsp,
 A08.8,,merge,A08 viral oth unsp,
-A08 remains,,keep,,"after the merging of A08s as above, anything else with ""A08"" in the ICD10 code (regex) should be kept and pruned"
+A08 remains,,keep,,"after the merging of A08s as above, anything else with ""A08"" in the ICD10 code (regex) should be kept (and not pruned)"
