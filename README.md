@@ -3,8 +3,4 @@ Deep Learning, Autoencoders and Variational Autoencoders in determining predicti
 
 
 Contributors:
-A Alim-Marvasti \n
-K Dahele
-H Otroshi
-S Sadrizadeh
-P Nachev
+Alim-Marvasti | Dahele | Otroshi | Sadrizadeh | Nachev
