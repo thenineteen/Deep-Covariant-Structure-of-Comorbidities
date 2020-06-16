@@ -1,0 +1,25 @@
+ICD10 Codes,ICD10 Description,Action,"If required, give new category name",Comment (optional)
+-,sepsis,create new category,Sepsis,"“Sepsis”: any ICD10 code description that has the word “sepsis” in it, gets a one-hot encoded 1 for this new category. Use regex with ignore case. Keep the original categories - performe the usual below exceptions then the default pruning. "
+A04.0,,merge,A04 Ecoli,
+A04.1,,merge,A04 Ecoli,
+A04.2,,merge,A04 Ecoli,
+A04.3,,merge,A04 Ecoli,
+A04.4,,merge,A04 Ecoli,
+A04.7,,parent,A04 7 Cdiff,"A04.7x should all me merged to the parent A04.7, and the name changed to ""A04.7-Cdiff"""
+,,,,
+A05.0,,keep,,
+A05.1,,keep,,
+A05.2,,keep,,
+A05.3,,keep,,
+A05.4,,keep,,
+A05.5,,keep,,
+A05.8,,merge,A05 8-9 foodbourne bacterial oth unsp,
+A05.9,,merge,A05 8-9 foodbourne bacterial oth unsp,
+,,,,
+A08,,merge,A08 viral oth unsp,"Merge pure A08, A08.3, A08.31, A08.39, A08.4 and A08.8 to “viral other and unspecified”"
+A08.3,,merge,A08 viral oth unsp,
+A08.31,,merge,A08 viral oth unsp,
+A08.39,,merge,A08 viral oth unsp,
+A08.4,,merge,A08 viral oth unsp,
+A08.8,,merge,A08 viral oth unsp,
+A08 remains,,keep,,"after the merging of A08s as above, anything else with ""A08"" in the ICD10 code (regex) should be kept and pruned"
