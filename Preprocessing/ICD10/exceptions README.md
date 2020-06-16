@@ -1,3 +1,9 @@
+1. first run the exceptions in the "ICD10 preprocessing exceptions" sheet; mark all outputs as exceptions i.e. all resulting codes (whether they are new categories or keeps)		
+
+2. then run the default parent/prune ONLY on categories that do not have an exception label		
+
+
+
 |      Action   Name     |                                                                      What it should do                                                                     |                                                                         Example                                                                        |
 |:----------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | default   parent/prune | by default all ICD10 codes are   pruned after the full stop, unless they are in the exceptions in this file   sheetname = "ICD10 Preprocessing Exceptions" |                                      A01.x --> all of these e.g.   A01.1 and A01.2 are merged onto the parent A01                                      |
