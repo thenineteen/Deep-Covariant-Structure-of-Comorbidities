@@ -1,9 +1,10 @@
-0. ensure the programme understands the "remains" keyword in the ICD code column
-1. first run the exceptions in the "ICD10 preprocessing exceptions" sheet;
+0. first create sepsis category and assign sepsis = 1 for any category description with the word "sepsis" (regex) - keep the originals as will be required for below mergings
+1. ensure the programme understands the "remains" keyword in the ICD code column - in fact, assume all codes with any values in the exceptions file should not be pruned for now
+2. first run the exceptions in the "ICD10 preprocessing exceptions" sheet;
    * in the "ICD10 Codes" Column, watch out for spaces after the name (i.e. use .strip() when matching) 		
-2. mark all diagnostic code outputs as a boolean True for a column called "exceptions"
+3. mark all diagnostic code outputs as a boolean True for a column called "exceptions"
    * i.e. all resulting codes - whether they are new categories or keeps - will be then kept and pruned under the default prune step. 
-3. then run the default parent/prune ONLY on categories that do have the boolean exception label False		
+4. then run the default parent/prune ONLY on categories that do have the boolean exception label False		
 
 
 
