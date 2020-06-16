@@ -1,6 +1,8 @@
+0. ensure the programme understands the "remains" keyword in the ICD code column
 1. first run the exceptions in the "ICD10 preprocessing exceptions" sheet; mark all outputs as exceptions i.e. all resulting codes (whether they are new categories or keeps). In the "ICD10 Codes" Column, watch out for spaces after the name (i.e. use .strip() when matching) 		
 
 2. then run the default parent/prune ONLY on categories that do not have an exception label		
+
 
 
 
