@@ -1,5 +1,5 @@
 0. first create sepsis category and assign sepsis = 1 for any category description with the word "sepsis" (regex) - keep the originals as will be required for below mergings. First row of csv.
-1. ensure the programme understands the "remains" keyword in the ICD code column - ( if unsure, assume all codes with any values in the exceptions file should not be pruned)
+1. ensure the programme understands the "remains" keyword in the ICD code column.
 2. Run the exceptions in the "ICD10 preprocessing exceptions" sheet;
    * in the "ICD10 Codes" Column, watch out for spaces after the name (i.e. use .strip() when matching)
    * may need to remove the fullstop and create a new name when "keep" action is exectuted to avoid pruning automatically later
