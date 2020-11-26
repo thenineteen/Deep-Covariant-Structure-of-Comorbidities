@@ -1,5 +1,4 @@
 ICD10 Codes,ICD10 Description,Action,"If required, give new category name",Comment (optional),further merging is possible: other and unspecified super categories
-"regex ""sepsis"" in the ICD10 descriptions",sepsis,create new category,Sepsis,"“Sepsis”: any ICD10 code description that has the word “sepsis” in it, gets a one-hot encoded 1 for this new category. Use regex with ignore case. Keep the original categories - performe the usual below exceptions then the default pruning. ",
 A04.0,,merge,Ecoli,,
 A04.1,,merge,Ecoli,,
 A04.2,,merge,Ecoli,,
