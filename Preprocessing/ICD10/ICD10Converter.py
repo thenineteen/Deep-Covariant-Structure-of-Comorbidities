@@ -1,12 +1,10 @@
-import numpy as np
 import pandas as pd
+import numpy as np
 import itertools
 
 class ICD10Converter:
-    def __init__(self, df, look_up_table):
-        self.plain_df = df
+    def __init__(self, look_up_table):
         self.look_up_table = look_up_table
-        self.convert(df)
     
     def make_keep_mask(self, df):
         """ KEEP - create mask of values which we do not want to prune at the end """
@@ -80,10 +78,10 @@ class ICD10Converter:
         rk_input_mask = rk_df.isin(rk_input_codes.values)
         return rk_input_mask
     
-    def make_prune_mask(self, masks_to_combine):
+    def make_prune_mask(self, masks_to_combine, column_names, index):
         # Prune everyting else
         no_prune_mask_np = np.logical_or.reduce(masks_to_combine)
-        no_prune_mask = pd.DataFrame(no_prune_mask_np, columns = self.plain_df.columns, index = self.plain_df.index)
+        no_prune_mask = pd.DataFrame(no_prune_mask_np, columns = column_names, index = index)
         to_prune_mask = ~no_prune_mask
         return to_prune_mask
     
@@ -119,19 +117,26 @@ class ICD10Converter:
         df_stages['merge'] = merge_dict['df']
 
         masks['remains_keep'] =  self.make_remains_keep_mask(merge_dict['df'])
-
-        to_prune_mask = self.make_prune_mask(list(masks.values()))
+        
+        column_names = df_stages['merge'].columns
+        index = df_stages['merge'].index
+        to_prune_mask = self.make_prune_mask(list(masks.values()), column_names, index)
         converted_df = self.apply_global_prune(merge_dict['df'], to_prune_mask)
         df_stages['converted'] = converted_df
         
-        print(1)
-        self.converted_df = converted_df
-        self.masks = masks
-        self.df_stages = df_stages
+        self._converted_df = converted_df
+        self._masks = masks
+        self._df_stages = df_stages
 
-        # return converted_df
+        return converted_df
 
 if __name__ == "__main__":
+
+    import numpy as np
+    import pandas as pd
+    import itertools
+
+
     first_path = '/Volumes/Encrypted/Deep-Covariant-Structure-of-Comorbidities/'
 
     pre_df = pd.read_csv(first_path+'Preprocessing/Data/patientsIn_Anon_diagnoses_only_duplicates_merged.csv', dtype='str') 
@@ -155,5 +160,5 @@ if __name__ == "__main__":
 
     look_up_table = tidy_look_up_df(look_up_table_raw)
 
-    converter = ICD10Converter(pre_df, look_up_table)
+    converter = ICD10Converter(look_up_table)
     converter.convert(pre_df)
